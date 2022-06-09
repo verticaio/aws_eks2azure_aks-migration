@@ -1,0 +1,31 @@
+efsProvisioner:
+  efsFileSystemId: "fs-05ddff55934533a4bd90f"
+  awsRegion: "us-east-1"
+  provisionerName: "example.com/aws-efs"
+  storageClass:
+    name: aws-efs
+    isDefault: false
+    gidAllocate:
+      enabled: true
+      gidMin: 40000
+      gidMax: 50000
+    reclaimPolicy: Delete
+    mountOptions: []
+
+## Enable RBAC
+rbac:
+  # Specifies whether RBAC resources should be created
+  create: true
+
+## Create or use ServiceAccount
+##
+serviceAccount:
+  # Specifies whether a ServiceAccount should be created
+  create: true
+  # The name of the ServiceAccount to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+  
+  
+podAnnotations:
+  iam.amazonaws.com/role: "efs-full-role-babak"
