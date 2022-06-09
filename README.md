@@ -23,7 +23,7 @@ You should pay close attention following things when you start migrate process.�
 As mentioned above cloud providers use different block/file storage class name, different container registry endpoints,  ingress rules annotations and .etc. It will cause to some problems when restore happened
 
 ### Storage Classes
-You should create same storage class name in restore k8s cluster as backup AWS EKS cluster according to block and file share classes. For example you have one block and efs storage classes in EKS cluster name as  gp2 and aws-efs and then maybe these names can't be exist in AKS side that's why you should create these storage classes in AKS side with relevant names in advance migration but behind the scenes  it will point out AKS resources block and file shared resources. 
+You should create same storage class name aks k8s cluster side in advance as  AWS EKS cluster storage classses specially according to block and file share classes. For example you have one block and efs storage classes in EKS cluster name as  gp2 and aws-efs and then maybe these names can't be exist in AKS side that's why you should create these storage classes in AKS side with relevant names in advance migration but behind the scenes  it will point out AKS resources block and file shared resources. 
 
 ### Container Images
 Perhaps you use ECR as  container registry  in  AWS EKS side and your aks cluster won't be connect AWS ECR registry if you don't make it up. In this scenario either you have to configure AKS with ECR or you import all AWS ECR images to Azure Container Registry and you must use kubectl patch command to update container images url  in your deployments after migrate.  This approach is almost same for ingress rule load balancer annotations.
